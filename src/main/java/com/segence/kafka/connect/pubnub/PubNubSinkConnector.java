@@ -7,15 +7,10 @@ import org.apache.kafka.connect.sink.SinkConnector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.CHANNEL;
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.PUBLISH_KEY;
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.USE_SECURE_CONNECTION;
 
 public class PubNubSinkConnector extends SinkConnector {
 

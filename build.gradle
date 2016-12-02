@@ -23,7 +23,7 @@ apply plugin: 'jacoco'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'com.segence.kafka.connect.pubnub'
-version = '0.0.1'
+version = '0.1.0'
 
 repositories {
   mavenCentral()
@@ -50,8 +50,23 @@ task wrapper(type: Wrapper) {
 }
 
 shadowJar {
+  classifier = null
   dependencies {
-    exclude(dependency("org.apache.kafka:.*"))
-    exclude(dependency("org.slf4j:.*"))
+    exclude(dependency('org.apache.kafka:.*'))
+    exclude(dependency('org.slf4j:.*'))
   }
 }
+
+jacocoTestReport {
+  reports {
+    html {
+      enabled true
+    }
+  }
+  afterEvaluate {
+    classDirectories = files(classDirectories.files.collect {
+      fileTree(dir: it, exclude: [ '**/*PubNubClient**', '**/*PublishCallback**' ])
+    })
+  }
+}
+test.finalizedBy(project.tasks.jacocoTestReport)
