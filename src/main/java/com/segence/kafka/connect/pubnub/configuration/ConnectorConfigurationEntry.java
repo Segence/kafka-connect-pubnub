@@ -8,7 +8,7 @@ import java.util.Optional;
 public enum ConnectorConfigurationEntry {
 
     PUBLISH_KEY("publishKey", Optional.empty(), Type.STRING, Importance.HIGH, "The PubNub publish key used to publish messages."),
-    SUBSCRIBE_KEY("subscribeKey", Optional.empty(),Type.STRING, Importance.HIGH, "The PubNub subscribe key used to publish messages."),
+    SUBSCRIBE_KEY("subscribeKey", Optional.empty(),Type.STRING, Importance.HIGH, "The PubNub subscribe key used to subscribe to a channel."),
     CHANNEL("channel", Optional.empty(),Type.STRING, Importance.HIGH, "The PubNub channel to publish messages to."),
     USE_SECURE_CONNECTION("useSecureConnection", Optional.empty(), Type.BOOLEAN, Importance.HIGH, "Flag to enable or disable using secure connection to the PubNub API."),
     SHOULD_STORE("shouldStore", Optional.of(false), Type.BOOLEAN, Importance.MEDIUM, "Flag to store in history. If false, then the history configuration on the key is used."),

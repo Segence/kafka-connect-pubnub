@@ -38,7 +38,7 @@ Configuration options:
 | **Name**              | **Description**                                                                        | **Default value**  |
 |:----------------------|:---------------------------------------------------------------------------------------|--------------------|
 | *publishKey*          | The PubNub publish key used to publish messages.                                       | *(none)*
-| *subscribeKey*        | The PubNub subscribe key used to publish messages.                                     | *(none)*
+| *subscribeKey*        | The PubNub subscribe key used to subscribe to a channel.                               | *(none)*
 | *channel*             | The PubNub channel to publish messages to.                                             | *(none)*
 | *useSecureConnection* | Flag to enable or disable using secure connection to the PubNub API.                   | *(none)*
 | *shouldStore*         | Flag to store in history. If false, then the history configuration on the key is used. | false
