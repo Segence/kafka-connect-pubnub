@@ -3,21 +3,27 @@ package com.segence.kafka.connect.pubnub.configuration;
 import org.apache.kafka.common.config.ConfigDef.Importance;
 import org.apache.kafka.common.config.ConfigDef.Type;
 
+import java.util.Optional;
+
 public enum ConnectorConfigurationEntry {
 
-    PUBLISH_KEY("publishKey", "PUBLISH_KEY", Type.STRING, Importance.HIGH, "The PubNub publish key used to publish messages."),
-    CHANNEL("channel", "CHANNEL", Type.STRING, Importance.HIGH, "The PubNub channel to publish messages to."),
-    USE_SECURE_CONNECTION("useSecureConnection", "USE_SECURE_CONNECTION", Type.BOOLEAN, Importance.HIGH, "Flag to enable or disable using secure connection to the PubNub API.");
+    PUBLISH_KEY("publishKey", Optional.empty(), Type.STRING, Importance.HIGH, "The PubNub publish key used to publish messages."),
+    SUBSCRIBE_KEY("subscribeKey", Optional.empty(),Type.STRING, Importance.HIGH, "The PubNub subscribe key used to publish messages."),
+    CHANNEL("channel", Optional.empty(),Type.STRING, Importance.HIGH, "The PubNub channel to publish messages to."),
+    USE_SECURE_CONNECTION("useSecureConnection", Optional.empty(), Type.BOOLEAN, Importance.HIGH, "Flag to enable or disable using secure connection to the PubNub API."),
+    SHOULD_STORE("shouldStore", Optional.of(false), Type.BOOLEAN, Importance.MEDIUM, "Store in history. If not specified, then the history configuration on the key is used."),
+    USE_POST("usePOST", Optional.of(false), Type.BOOLEAN, Importance.MEDIUM, "Use HTTP POST method to publish.");
 
     private String configKeyName;
-    private String internalConfigKeyName;
+    private Optional<Object> defaultValue;
     private Type configType;
     private Importance importance;
     private String description;
 
-    ConnectorConfigurationEntry(String configKeyName, String internalConfigKeyName, Type configType, Importance importance, String description) {
+    ConnectorConfigurationEntry(String configKeyName, Optional<Object> defaultValue, Type configType, Importance importance, String description) {
         this.configKeyName = configKeyName;
-        this.internalConfigKeyName = internalConfigKeyName;
+        this.defaultValue = defaultValue;
+
         this.configType = configType;
         this.importance = importance;
         this.description = description;
@@ -27,8 +33,8 @@ public enum ConnectorConfigurationEntry {
         return configKeyName;
     }
 
-    public String getInternalConfigKeyName() {
-        return internalConfigKeyName;
+    public Optional<Object> getDefaultValue() {
+        return defaultValue;
     }
 
     public Type getConfigType() {

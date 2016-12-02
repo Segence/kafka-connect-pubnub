@@ -14,14 +14,9 @@ public class PubNubSinkConnectorTest {
 
     private static final Map<String, String> TEST_CONFIGURATION = new HashMap<String, String>() {{
         put("publishKey", "ABCD");
+        put("subscribeKey", "EDFG");
         put("channel", "channel-name");
         put("useSecureConnection", "true");
-    }};
-
-    private static final Map<String, String> EXPECTED_TEST_CONFIGURATION = new HashMap<String, String>() {{
-        put("PUBLISH_KEY", "ABCD");
-        put("CHANNEL", "channel-name");
-        put("USE_SECURE_CONNECTION", "true");
     }};
 
     private PubNubSinkConnector underTest = new PubNubSinkConnector();
@@ -29,7 +24,7 @@ public class PubNubSinkConnectorTest {
     @Test
     public void taskConfigsShouldReturnConfigurationForAllTasks() {
 
-        List<Map<String, String>> expectedResult = Arrays.asList(EXPECTED_TEST_CONFIGURATION, EXPECTED_TEST_CONFIGURATION);
+        List<Map<String, String>> expectedResult = Arrays.asList(TEST_CONFIGURATION, TEST_CONFIGURATION);
 
         underTest.start(TEST_CONFIGURATION);
         List<Map<String, String>> result = underTest.taskConfigs(2);

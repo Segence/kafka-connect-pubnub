@@ -53,5 +53,6 @@ task wrapper(type: Wrapper) {
 shadowJar {
   dependencies {
     exclude(dependency("org.apache.kafka:.*"))
+    exclude(dependency("org.slf4j:.*"))
   }
 }
