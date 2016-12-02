@@ -1,7 +1,5 @@
-Gradle Java bootstrap
-=====================
-
-Using Gradle as the build tool and JUnit as the test framework with Hamcrest and Mockito.
+Kafka Connect PubNub connector
+==============================
 
 - Run: `./gradlew run`
 - Test with coverage: `./gradlew test cobertura`
