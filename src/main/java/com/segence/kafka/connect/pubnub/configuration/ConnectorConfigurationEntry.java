@@ -11,8 +11,8 @@ public enum ConnectorConfigurationEntry {
     SUBSCRIBE_KEY("subscribeKey", Optional.empty(),Type.STRING, Importance.HIGH, "The PubNub subscribe key used to publish messages."),
     CHANNEL("channel", Optional.empty(),Type.STRING, Importance.HIGH, "The PubNub channel to publish messages to."),
     USE_SECURE_CONNECTION("useSecureConnection", Optional.empty(), Type.BOOLEAN, Importance.HIGH, "Flag to enable or disable using secure connection to the PubNub API."),
-    SHOULD_STORE("shouldStore", Optional.of(false), Type.BOOLEAN, Importance.MEDIUM, "Store in history. If not specified, then the history configuration on the key is used."),
-    USE_POST("usePOST", Optional.of(false), Type.BOOLEAN, Importance.MEDIUM, "Use HTTP POST method to publish.");
+    SHOULD_STORE("shouldStore", Optional.of(false), Type.BOOLEAN, Importance.MEDIUM, "Flag to store in history. If false, then the history configuration on the key is used."),
+    USE_POST("usePOST", Optional.of(false), Type.BOOLEAN, Importance.MEDIUM, "Flag to use HTTP POST method to publish.");
 
     private String configKeyName;
     private Optional<Object> defaultValue;
