@@ -10,6 +10,8 @@ Building
 - Build JAR with dependencies: `./gradlew shadowJar`
 - Static analysis using [SonarQube](http://www.sonarqube.org): `./gradlew sonarRunner`
 
+*Note*: built for Java 8 so requires JDK 8 to compile and JRE 8 to run.
+
 Configuration
 -------------
 
