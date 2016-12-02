@@ -6,9 +6,9 @@ import org.jooq.lambda.Seq;
 
 import java.util.Map;
 
-public class ConnectorConfigurations extends AbstractConfig {
+public class PubNubConnectorConfiguration extends AbstractConfig {
     public static final ConfigDef CONFIG_DEFINITIONS =
-            Seq.of(ConnectorConfiguration.values()).foldLeft(new ConfigDef(), (configDef, configEntry) ->
+            Seq.of(ConnectorConfigurationEntry.values()).foldLeft(new ConfigDef(), (configDef, configEntry) ->
                 configDef.define(configEntry.getConfigKeyName(),
                                  configEntry.getConfigType(),
                                  configEntry.getImportance(),
@@ -16,7 +16,7 @@ public class ConnectorConfigurations extends AbstractConfig {
                                 )
             );
 
-    public ConnectorConfigurations(ConfigDef definition, Map<?, ?> originals, boolean doLog) {
+    public PubNubConnectorConfiguration(ConfigDef definition, Map<?, ?> originals, boolean doLog) {
         super(definition, originals, doLog);
     }
 }

@@ -1,6 +1,6 @@
 package com.segence.kafka.connect.pubnub;
 
-import com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurations;
+import com.segence.kafka.connect.pubnub.configuration.PubNubConnectorConfiguration;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
 import org.apache.kafka.connect.sink.SinkConnector;
@@ -13,9 +13,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfiguration.CHANNEL;
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfiguration.PUBLISH_KEY;
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfiguration.USE_SECURE_CONNECTION;
+import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.CHANNEL;
+import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.PUBLISH_KEY;
+import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.USE_SECURE_CONNECTION;
 
 public class PubNubSinkConnector extends SinkConnector {
 
@@ -58,6 +58,6 @@ public class PubNubSinkConnector extends SinkConnector {
 
     @Override
     public ConfigDef config() {
-        return ConnectorConfigurations.CONFIG_DEFINITIONS;
+        return PubNubConnectorConfiguration.CONFIG_DEFINITIONS;
     }
 }

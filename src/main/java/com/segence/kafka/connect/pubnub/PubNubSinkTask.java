@@ -5,7 +5,7 @@ import com.pubnub.api.PubNub;
 import com.pubnub.api.callbacks.PNCallback;
 import com.pubnub.api.models.consumer.PNPublishResult;
 import com.pubnub.api.models.consumer.PNStatus;
-import com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurations;
+import com.segence.kafka.connect.pubnub.configuration.PubNubConnectorConfiguration;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.connect.sink.SinkRecord;
@@ -16,10 +16,10 @@ import org.slf4j.LoggerFactory;
 import java.util.Collection;
 import java.util.Map;
 
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfiguration.CHANNEL;
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfiguration.PUBLISH_KEY;
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfiguration.USE_SECURE_CONNECTION;
-import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurations.CONFIG_DEFINITIONS;
+import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.CHANNEL;
+import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.PUBLISH_KEY;
+import static com.segence.kafka.connect.pubnub.configuration.ConnectorConfigurationEntry.USE_SECURE_CONNECTION;
+import static com.segence.kafka.connect.pubnub.configuration.PubNubConnectorConfiguration.CONFIG_DEFINITIONS;
 
 class PubNubSinkTask extends SinkTask {
 
@@ -44,13 +44,13 @@ class PubNubSinkTask extends SinkTask {
 
         LOGGER.info("Starting PubNub Sink Task...");
 
-        ConnectorConfigurations connectorConfigurations = new ConnectorConfigurations(CONFIG_DEFINITIONS, props, true);
+        PubNubConnectorConfiguration pubNubConnectorConfiguration = new PubNubConnectorConfiguration(CONFIG_DEFINITIONS, props, true);
 
-        channelName = connectorConfigurations.getString(CHANNEL.getInternalConfigKeyName());
+        channelName = pubNubConnectorConfiguration.getString(CHANNEL.getInternalConfigKeyName());
 
         PNConfiguration pnConfiguration = new PNConfiguration();
-        pnConfiguration.setPublishKey(connectorConfigurations.getString(PUBLISH_KEY.getInternalConfigKeyName()));
-        pnConfiguration.setSecure(connectorConfigurations.getBoolean(USE_SECURE_CONNECTION.getInternalConfigKeyName()));
+        pnConfiguration.setPublishKey(pubNubConnectorConfiguration.getString(PUBLISH_KEY.getInternalConfigKeyName()));
+        pnConfiguration.setSecure(pubNubConnectorConfiguration.getBoolean(USE_SECURE_CONNECTION.getInternalConfigKeyName()));
 
         pubNubClient = new PubNub(pnConfiguration);
     }

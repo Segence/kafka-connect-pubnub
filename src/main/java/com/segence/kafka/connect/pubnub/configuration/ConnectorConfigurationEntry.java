@@ -3,7 +3,7 @@ package com.segence.kafka.connect.pubnub.configuration;
 import org.apache.kafka.common.config.ConfigDef.Importance;
 import org.apache.kafka.common.config.ConfigDef.Type;
 
-public enum ConnectorConfiguration {
+public enum ConnectorConfigurationEntry {
 
     PUBLISH_KEY("publishKey", "PUBLISH_KEY", Type.STRING, Importance.HIGH, "The PubNub publish key used to publish messages."),
     CHANNEL("channel", "CHANNEL", Type.STRING, Importance.HIGH, "The PubNub channel to publish messages to."),
@@ -15,7 +15,7 @@ public enum ConnectorConfiguration {
     private Importance importance;
     private String description;
 
-    ConnectorConfiguration(String configKeyName, String internalConfigKeyName, Type configType, Importance importance, String description) {
+    ConnectorConfigurationEntry(String configKeyName, String internalConfigKeyName, Type configType, Importance importance, String description) {
         this.configKeyName = configKeyName;
         this.internalConfigKeyName = internalConfigKeyName;
         this.configType = configType;
